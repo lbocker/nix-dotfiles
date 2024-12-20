@@ -59,6 +59,9 @@
         alt-shift-up = "move up";
         alt-shift-down = "move down";
 
+        alt-shift-cmd-right = "move-node-to-monitor right";
+        alt-shift-cmd-left = "move-node-to-monitor left";
+
         alt-shift-space = "layout floating tiling";
         alt-f = "layout floating tiling";
 
