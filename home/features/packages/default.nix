@@ -18,7 +18,6 @@
     ssm-session-manager-plugin
     wget
     wireguard-tools
-    mysql80
     kubectl
     kubectx
     kubernetes-helm

@@ -48,6 +48,9 @@
 
       # Go Binaries
       fish_add_path $GOPATH/bin
+
+      # MySQL
+      fish_add_path /opt/homebrew/opt/mysql-client/bin
     '';
 
     plugins = [

@@ -19,6 +19,7 @@
       "argocd"
       "eks-node-viewer"
       "azure-cli"
+      "mysql-client"
     ];
 
     casks = [
