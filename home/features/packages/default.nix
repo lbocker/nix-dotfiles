@@ -25,6 +25,7 @@
     stern
 
     terraform
+    pulumi-bin
 
     act
     ory
