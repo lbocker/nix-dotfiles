@@ -27,6 +27,8 @@
     terraform
     pulumi-bin
 
+    nodejs_22
+
     act
     ory
 
