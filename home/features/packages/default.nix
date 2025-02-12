@@ -25,7 +25,6 @@
     stern
 
     terraform
-    pulumi-bin
 
     nodejs_22
 
