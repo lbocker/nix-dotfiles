@@ -25,8 +25,6 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfreePredicate = _: true;
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };

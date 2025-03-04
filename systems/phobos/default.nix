@@ -16,6 +16,8 @@
 
   system.stateVersion = 5;
 
+  ids.gids.nixbld = 30000;
+
   users.users.kevin = {
     home = "/Users/kevin";
     shell = "${pkgs.fish}/bin/fish";
@@ -41,7 +43,6 @@
     raycast
   ];
 
-  services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   programs.fish.enable = true;
