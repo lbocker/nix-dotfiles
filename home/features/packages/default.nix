@@ -12,6 +12,7 @@
     gnused
     ripgrep
     unixtools.watch
+    nmap
     htop
     coreutils
     pigz
@@ -40,8 +41,6 @@
     gh
     k6
     awscli2
-    eksctl
-    cilium-cli
 
     kind
   ];
