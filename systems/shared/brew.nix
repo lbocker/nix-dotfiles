@@ -25,6 +25,7 @@
     casks = [
       "orbstack"
       "hammerspoon"
+      "gitify"
     ];
   };
 }
