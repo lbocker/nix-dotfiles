@@ -24,6 +24,7 @@
     kubernetes-helm
     kubent
     stern
+    uv
 
     terraform
 
