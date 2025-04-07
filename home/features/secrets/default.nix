@@ -17,12 +17,6 @@
       format = "yaml";
       mode = "0600";
     };
-
-    secrets.wg_staging = {
-      path = "${config.home.homeDirectory}/.config/wireguard/staging.conf";
-      format = "yaml";
-      mode = "0600";
-    };
   };
 
 }

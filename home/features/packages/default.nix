@@ -18,7 +18,6 @@
     pigz
     ssm-session-manager-plugin
     wget
-    wireguard-tools
     kubectl
     kubectx
     kubernetes-helm
