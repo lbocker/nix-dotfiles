@@ -24,6 +24,7 @@
     kubent
     stern
     uv
+    cargo
 
     terraform
 

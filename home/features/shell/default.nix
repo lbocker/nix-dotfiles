@@ -51,6 +51,9 @@
 
       # MySQL
       fish_add_path /opt/homebrew/opt/mysql-client/bin
+
+      # Cargo
+      fish_add_path $HOME/.cargo/bin
     '';
 
     plugins = [
