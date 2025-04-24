@@ -20,6 +20,7 @@
       "eks-node-viewer"
       "azure-cli"
       "mysql-client"
+      "television"
     ];
 
     casks = [
