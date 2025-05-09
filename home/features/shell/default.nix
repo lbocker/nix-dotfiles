@@ -84,6 +84,10 @@
             echo "Found valid SSO session, using it!"
         end
       '';
+      ssm-headscale = ''
+        set HEADSCALE_INSTANCE_ID (aws ec2 describe-instances --filters "Name=tag:Name,Values=headscale" --query 'Reservations[].Instances[].InstanceId' --output text)
+        aws ssm start-session --document-name AWS-StartInteractiveCommand  --parameters command="bash -l" --target $HEADSCALE_INSTANCE_ID
+      '';
     };
   };
 
