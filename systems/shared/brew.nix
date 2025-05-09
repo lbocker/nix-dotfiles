@@ -18,7 +18,6 @@
       "docker-credential-helper"
       "argocd"
       "eks-node-viewer"
-      "azure-cli"
       "mysql-client"
       "television"
     ];
