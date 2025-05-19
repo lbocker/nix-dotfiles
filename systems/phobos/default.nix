@@ -15,6 +15,7 @@
   ];
 
   system.stateVersion = 5;
+  system.primaryUser = "kevin";
 
   ids.gids.nixbld = 30000;
 
