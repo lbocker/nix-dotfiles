@@ -55,6 +55,7 @@
   time.timeZone = "Europe/Berlin";
 
   nix.settings = {
+    download-buffer-size = 524288000;
     trusted-users = [ "root" "kevin" ];
     trusted-substituters = [
       "https://cachix.cachix.org"
