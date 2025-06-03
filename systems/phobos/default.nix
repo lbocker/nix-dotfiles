@@ -42,6 +42,7 @@
 
   environment.systemPackages = with pkgs; [
     raycast
+    obsidian
   ];
 
   nixpkgs.config.allowUnfree = true;
