@@ -66,7 +66,7 @@
         alt-f = "layout floating tiling";
 
         alt-enter = "exec-and-forget open -na WezTerm";
-        alt-b = "exec-and-forget open -na \"Google Chrome\" --args --new-window";
+        alt-b = "exec-and-forget open -na /Applications/Zen\\ Browser.app/Contents/MacOS/zen --args --new-window";
 
         alt-l = "exec-and-forget pmset displaysleepnow";
 
