@@ -25,6 +25,7 @@
     stern
     uv
     cargo
+    flameshot
 
     terraform
 
