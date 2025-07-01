@@ -26,6 +26,7 @@
     uv
     cargo
     flameshot
+    claude-code
 
     terraform
 
