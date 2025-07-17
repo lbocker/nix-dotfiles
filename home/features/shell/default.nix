@@ -35,63 +35,28 @@
       set -gx VOLTA_HOME $HOME/.volta
       fish_add_path $VOLTA_HOME/bin
 
-      # Krew
-      fish_add_path $HOME/.krew/bin
-
       # Go Binaries
       fish_add_path $GOPATH/bin
 
       # MySQL
       fish_add_path /opt/homebrew/opt/mysql-client/bin
 
-      # Cargo
-      fish_add_path $HOME/.cargo/bin
+      # XDG Config Home
+      set -gx XDG_CONFIG_HOME $HOME/.config
     '';
 
     plugins = [
       { name = "fzf"; src = pkgs.fishPlugins.fzf-fish.src; }
     ];
-
-    functions = {
-      c = ''
-        set DIR (zoxide query -l | fzf)
-        z $DIR
-      '';
-      t = ''
-        tmux attach -t "$(tmux ls -F '#{session_name}:#{window_name}' | fzf)"
-      '';
-      awsx = ''
-        if test -z $AWSX_PROFILES
-            set -gx AWS_PROFILES (aws configure list-profiles | string split0)
-        end
-
-        set -gx AWS_PROFILE (echo $AWS_PROFILES | fzf)
-
-        echo "Using profile: $AWS_PROFILE"
-        aws sts get-caller-identity &> /dev/null
-        if test $status != 0
-            echo "AWS SSO Session expired. Logging in..."
-            aws sso login
-        else
-            echo "Found valid SSO session, using it!"
-        end
-      '';
-      ssm-headscale = ''
-        set HEADSCALE_INSTANCE_ID (aws ec2 describe-instances --filters "Name=tag:Name,Values=headscale" --query 'Reservations[].Instances[].InstanceId' --output text)
-        aws ssm start-session --document-name AWS-StartInteractiveCommand  --parameters command="bash -l" --target $HEADSCALE_INSTANCE_ID
-      '';
-    };
   };
 
   programs.starship = {
     enable = true;
+    enableFishIntegration = true;
+  };
 
-    settings = {
-      aws.disabled = true;
-      gcloud.disabled = true;
-      git_status.disabled = true;
-      command_timeout = 1500;
-    };
+  home.file = { 
+    ".config/starship.toml".source = ./starship.toml;
   };
 
   programs.zoxide = {
@@ -106,8 +71,12 @@
 
   home.shellAliases = {
     "cat" = "bat -pp";
-    "tailscale" = "/Applications/Tailscale.localized/Tailscale.app/Contents/MacOS/Tailscale";
-    "k" = "kubectl";
+    "python" = "python3";
+    "pip" = "pip3";
+    "cdcore" = "cd $HOME/work/sbp/Components/Core";
+    "cdfrontend" = "cd $HOME/work/sbp/Components/Frontend";
+    "cdaccount" = "cd $HOME/work/sbp/Components/Account2";
+    "ls" = "eza --icons --group --group-directories-first";
     "ll" = "eza --icons --group --group-directories-first -l";
   };
 }

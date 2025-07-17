@@ -4,14 +4,11 @@
 }: {
 
   imports = [
-    flake.inputs.sops-nix.homeManagerModule
     ./features/shell
     ./features/packages
     ./features/git
     ./features/nvim
-    ./features/secrets
     ./features/tmux
-    ./features/wezterm
     ./features/go
     ./features/php
   ];

@@ -18,34 +18,19 @@
     pigz
     ssm-session-manager-plugin
     wget
-    kubectl
-    kubectx
-    kubernetes-helm
-    kubent
-    stern
     uv
-    cargo
-    flameshot
     claude-code
 
-    terraform
-
-    nodejs_22
+    nodejs_24
 
     act
-    ory
 
     istioctl
     docker-client
     docker-buildx
     dive
     bun
-    k9s
     gh
-    k6
-    awscli2
-
-    kind
   ];
 }
 
