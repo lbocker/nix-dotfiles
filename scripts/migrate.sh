@@ -16,7 +16,8 @@ EOF
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd -- "$script_dir/.." && pwd)"
-host="$(hostname -s 2>/dev/null || hostname)"
+source "$script_dir/lib/resolve-host.sh"
+host="$(resolve_dotfiles_host "$repo_root")"
 migrations_dir=""
 state_dir=""
 

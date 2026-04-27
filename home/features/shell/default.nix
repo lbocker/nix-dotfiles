@@ -35,10 +35,24 @@ in
       fish_add_path /nix/var/nix/profiles/default/bin
 
       # Host-local dotfiles scripts
-      set -l dotfiles_host (hostname -s 2>/dev/null)
+      set -l dotfiles_host ""
+      set -l dotfiles_host_alias_file "$HOME/.config/nix-dotfiles/.local/host-alias"
+
+      if test -n "$DOTFILES_HOST_ALIAS"
+        set dotfiles_host $DOTFILES_HOST_ALIAS
+      else if test -f "$dotfiles_host_alias_file"
+        set dotfiles_host (string trim -- (command cat "$dotfiles_host_alias_file"))
+      end
+
+      if test -z "$dotfiles_host"
+        set dotfiles_host (hostname -s 2>/dev/null)
+      end
+
       if test -z "$dotfiles_host"
         set dotfiles_host (hostname)
       end
+
+      set -gx DOTFILES_HOST_ALIAS $dotfiles_host
 
       set -l dotfiles_host_bin "$HOME/.config/nix-dotfiles/systems/$dotfiles_host/bin"
       if test -d "$dotfiles_host_bin"

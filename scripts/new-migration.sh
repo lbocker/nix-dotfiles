@@ -13,6 +13,7 @@ EOF
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd -- "$script_dir/.." && pwd)"
 template_path="$repo_root/systems/.templates/host-migration.sh.template"
+source "$script_dir/lib/resolve-host.sh"
 
 host=""
 description=""
@@ -41,7 +42,7 @@ while (($# > 0)); do
   esac
 done
 
-default_host="$(hostname -s 2>/dev/null || hostname)"
+default_host="$(resolve_dotfiles_host "$repo_root")"
 
 if [[ -z "$host" ]]; then
   read -r -p "Hostname [$default_host]: " host

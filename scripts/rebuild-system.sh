@@ -12,7 +12,8 @@ EOF
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd -- "$script_dir/.." && pwd)"
-host="$(hostname -s 2>/dev/null || hostname)"
+source "$script_dir/lib/resolve-host.sh"
+host="$(resolve_dotfiles_host "$repo_root")"
 user_name="$(id -un)"
 
 while (($# > 0)); do
@@ -52,7 +53,7 @@ case "$(uname -s)" in
     echo ""
 
     if command -v nh >/dev/null 2>&1; then
-      nh home switch "$repo_root"
+      nh home switch --configuration "$user_name@$host" "$repo_root"
     else
       NIXPKGS_ALLOW_UNFREE=1 nix run home-manager -- switch --flake "$repo_root#$user_name@$host" --impure
     fi
@@ -62,7 +63,7 @@ case "$(uname -s)" in
     echo ""
 
     if command -v nh >/dev/null 2>&1; then
-      nh darwin switch "$repo_root"
+      nh darwin switch --hostname "$host" "$repo_root"
     else
       sudo NIXPKGS_ALLOW_UNFREE=1 nix run nix-darwin -- switch --flake "$repo_root#$host" --show-trace
     fi
