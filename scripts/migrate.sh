@@ -10,7 +10,7 @@ migration as a file in the selected state directory.
 
 Examples:
   ./scripts/migrate.sh
-  ./scripts/migrate.sh --host deimos
+  ./scripts/migrate.sh --host gengar
 EOF
 }
 
