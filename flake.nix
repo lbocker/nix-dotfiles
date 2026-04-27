@@ -44,21 +44,17 @@
           inherit sops-nix catppuccin mac-app-util devenv;
         };
       };
-      mkPkgs = system: import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
 
       darwinConfigurations = {
-        phobos = nix-darwin.lib.darwinSystem {
+        gengar = nix-darwin.lib.darwinSystem {
           specialArgs = extraArgs // {
             remapKeys = false;
           };
           system = "aarch64-darwin";
           modules = [
-            ./systems/phobos
+            ./systems/gengar
             home-manager.darwinModules.default
             {
               home-manager.useGlobalPkgs = true;
@@ -71,29 +67,12 @@
               determinateNix.customSettings = {
                 auto-optimise-store = true;
                 lazy-trees = true;
-                trusted-users = [ "root kevin" ];
+                trusted-users = [ "root" "lukasbocker" ];
                 trusted-substituters = "https://cachix.cachix.org https://nixpkgs.cachix.org";
                 trusted-public-keys = "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM= nixpkgs.cachix.org-1:q91R6hxbwFvDqTSDKwDAV4T5PxqXGxswD8vhONFMeOE= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
               };
             }
           ];
-        };
-      };
-
-      homeConfigurations = {
-
-        # Cachy
-        "kevin@cachy" = home-manager.lib.homeManagerConfiguration {
-          modules = [ ./home/cachy.nix ];
-          pkgs = mkPkgs "x86_64-linux";
-          extraSpecialArgs = extraArgs;
-        };
-
-        # Arch-based Linux host
-        "kevin@deimos" = home-manager.lib.homeManagerConfiguration {
-          modules = [ ./home/deimos.nix ];
-          pkgs = mkPkgs "x86_64-linux";
-          extraSpecialArgs = extraArgs;
         };
       };
     };

@@ -12,36 +12,27 @@
 
     taps = [
       "aws/tap"
-      "TheBoredTeam/boring-notch"
-      "jackielii/tap"
     ];
 
     brews = [
       "docker-credential-helper"
-      "argocd"
-      "eks-node-viewer"
       "mysql-client"
-      "television"
-      "aqua"
+      "ollama"
+      "gettext"
       "mise"
-      "nss"
-      "opencode"
-      "skhd-zig"
-      "llama.cpp"
-      "luarocks"
+      "lazygit"
     ];
 
     casks = [
       "orbstack"
       "hammerspoon"
       "gitify"
-      "boring-notch"
-      "calibre"
-      "codex"
-      "beekeeper-studio"
-      "stats"
-      "dbeaver-community"
-      "t3-code"
+      "babeledit"
+      "spotify"
+      "logi-options+"
+      "cursor"
+      "jetbrains-toolbox"
+      "yaak"
     ];
   };
 }

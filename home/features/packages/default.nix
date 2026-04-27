@@ -12,7 +12,6 @@ in
 
     nixpkgs-fmt
     sops
-    nh
 
     _1password-cli
     jq

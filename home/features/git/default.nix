@@ -11,15 +11,13 @@
       enable = true;
     };
 
-    signing.key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoDDDhao2sZNI8bkouzh0J21uSWRNUvKfHhsliR8U1oPKs8r7xSovTgY2Ex7cSmoDfOj5xBvocgE/QWGwPso9QibNv7+DgaFALtofcjiUr53CVxym7vFwAOseiydjQHhrvYZuRBLe+bcUKByA3oN9yBNSJYP5a2owJNLzdnOSQBWcVQdHuUtgyZqYL2In1e0xuhETsZWznOaZyrFrRIKoknPRbZvnhLgN0L/U+t0mjRczkj1SxBKKQW6DqGdeSrPo+KFFxGcrciQTkLotthnGtv/J3z+NQvWNsJBYDU7rrooL6xA0//m1+P9e1K4u5coAwSb6DTDfEhos5G/PC+03J";
-    signing.signByDefault = true;
-    signing.format = "openpgp";
+    userName = "lbocker";
+    userEmail = "l.boecker@shopware.com";
 
-    settings = {
-      user = {
-        email = "k.rudde@shopware.com";
-        name = "Kevin Rudde";
-      };
+    signing.key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDiWpk7HselMlV3bTrerZbv4Ej3PdKfqDk0FNzZ0y+bwaXURXYRCIma4Iq6/xAG+Xd92nZOXs8oJmg0mUTXrSnVzqf8/4NpFLh6X6WxSmnNBTkEDP8ffC3A6VsdFItGSazwKmDe4oxTseAGNWNO5Uh0MuFby7hgEC+iQNYTtMYAqk56ZOToKmJYNrgxde8Hky3iqW4VcdLF5Q0q4VP89HWcxWmlyueUvceNOM2iZThYCbPW9QY7Zh+70LvAfto9HMGR+H5h6JSp4lf7wlYdAKhq5Y7DF6G2oMFk9ZnSLjY/HKe/ZIVf35k0crT+h+JwQmQTDfuupOmWshHsaSq6HKPuuOvMw8PygezylaD/rWNehjfU7vcLAps09zStlvdKuzwoaUew7VsXB2LTf+9OBMeBrAOsRF39GefHFR6CGR2rQCqrimVO6Tf5gjlNCE+Q5dQKXbZg1NXKHnGw/eKZwi0hwDdB92FAZatbRr8IxIhlTcEKrW/1+xJEc4IbUZCX/YU=";
+    signing.signByDefault = true;
+
+    extraConfig = {
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       pull.rebase = true;
@@ -28,7 +26,6 @@
       fetch.prune = true;
 
       gpg.format = "ssh";
-      url."git@github.com:".insteadOf = "https://github.com";
     };
   };
 
@@ -38,17 +35,15 @@
       promptToReturnFromSubprocess = false;
       git = {
         overrideGpg = true;
-        pagers = [
-          {
-            colorArg = "always";
-            pager = "delta --dark --line-numbers --paging=never";
-          }
-        ];
+        paging = {
+          colorArg = "always";
+          pager = "delta --dark --paging=never";
+        };
       };
     };
   };
 
   home.file = {
-    ".ssh/allowed_signers".text = "k.rudde@shopware.com namespaces=\"git\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoDDDhao2sZNI8bkouzh0J21uSWRNUvKfHhsliR8U1oPKs8r7xSovTgY2Ex7cSmoDfOj5xBvocgE/QWGwPso9QibNv7+DgaFALtofcjiUr53CVxym7vFwAOseiydjQHhrvYZuRBLe+bcUKByA3oN9yBNSJYP5a2owJNLzdnOSQBWcVQdHuUtgyZqYL2In1e0xuhETsZWznOaZyrFrRIKoknPRbZvnhLgN0L/U+t0mjRczkj1SxBKKQW6DqGdeSrPo+KFFxGcrciQTkLotthnGtv/J3z+NQvWNsJBYDU7rrooL6xA0//m1+P9e1K4u5coAwSb6DTDfEhos5G/PC+03J";
+    ".ssh/allowed_signers".text = "l.boecker@shopware.com namespaces=\"git\" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDiWpk7HselMlV3bTrerZbv4Ej3PdKfqDk0FNzZ0y+bwaXURXYRCIma4Iq6/xAG+Xd92nZOXs8oJmg0mUTXrSnVzqf8/4NpFLh6X6WxSmnNBTkEDP8ffC3A6VsdFItGSazwKmDe4oxTseAGNWNO5Uh0MuFby7hgEC+iQNYTtMYAqk56ZOToKmJYNrgxde8Hky3iqW4VcdLF5Q0q4VP89HWcxWmlyueUvceNOM2iZThYCbPW9QY7Zh+70LvAfto9HMGR+H5h6JSp4lf7wlYdAKhq5Y7DF6G2oMFk9ZnSLjY/HKe/ZIVf35k0crT+h+JwQmQTDfuupOmWshHsaSq6HKPuuOvMw8PygezylaD/rWNehjfU7vcLAps09zStlvdKuzwoaUew7VsXB2LTf+9OBMeBrAOsRF39GefHFR6CGR2rQCqrimVO6Tf5gjlNCE+Q5dQKXbZg1NXKHnGw/eKZwi0hwDdB92FAZatbRr8IxIhlTcEKrW/1+xJEc4IbUZCX/YU=";
   };
 }

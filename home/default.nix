@@ -1,21 +1,17 @@
-{ pkgs
-, inputs
-, ...
+{
+  ...
 }: {
 
   imports = [
-    inputs.sops-nix.homeManagerModule
-    inputs.catppuccin.homeModules.catppuccin
     ./features/shell
     ./features/packages
     ./features/git
     ./features/nvim
-    ./features/secrets
     ./features/tmux
-    ./features/wezterm
     ./features/go
+    ./features/rust
     ./features/php
-    ./features/k9s
+    ./features/hammerspoon
   ];
 
   # This value determines the Home Manager release that your configuration is

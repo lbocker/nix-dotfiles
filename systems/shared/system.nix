@@ -34,13 +34,18 @@
   };
 
   system.defaults = {
-    NSGlobalDomain.AppleShowAllExtensions = true;
-    NSGlobalDomain.NSWindowShouldDragOnGesture = true;
     WindowManager.EnableStandardClickToShowDesktop = false;
     finder.AppleShowAllExtensions = true;
     finder._FXShowPosixPathInTitle = true;
     finder.FXEnableExtensionChangeWarning = false;
-    NSGlobalDomain."com.apple.swipescrolldirection" = false;
+
+    "NSGlobalDomain" = {
+      AppleShowAllExtensions = true;
+      NSWindowShouldDragOnGesture = true;
+      "com.apple.swipescrolldirection" = false;
+      AppleMeasurementUnits = "Centimeters";
+      AppleMetricUnits = 1;
+    };
   };
 
   system.defaults.CustomUserPreferences = {
